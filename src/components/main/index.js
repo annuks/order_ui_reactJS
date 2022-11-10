@@ -22,7 +22,7 @@ const Main = () => {
 		user = JSON.parse(user);
 		let token = user.token;
 		const myDecodedToken = decodeToken(token);
-		console.log("USer",myDecodedToken);
+		console.log("USer",myDecodedToken,token);
 		setUser(myDecodedToken);
 		
 		
@@ -30,7 +30,7 @@ const Main = () => {
 			headers: { Authorization: `Bearer ${token}` }
 		};
 				const { data:res } = await axios.get( 
-			`http://localhost:1234/get-order?user_id=${user._id}`,
+			`http://localhost:1234/get-order?user_id=${myDecodedToken._id}`,
 			config
 		  )
 		  console.log(res)
